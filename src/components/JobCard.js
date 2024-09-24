@@ -4,6 +4,7 @@ import Card from "./reusable/CompanyCard";
 import NavBar from "./reusable/Navbar";
 import Footer from "./reusable/Footer";
 import { fetchData } from "../data/fetchData";
+import addFavorite from "../features/slices/functions/addFavorite";
 function JobCard() {
     const [jobs, setJobs] = useState([]);
     useEffect(() => {
@@ -15,6 +16,7 @@ function JobCard() {
     const renderJobCards = jobs.map(job => {
         return <Card
             key={job.id}
+            id={job.id}
             image={'https://m.media-amazon.com/images/I/514q4uEjRaL._UF350,350_QL80_.jpg'}
             imageAlt={job.job_rquire}
             title={job.position}
@@ -27,6 +29,7 @@ function JobCard() {
             location={job.location}
             deadLine={job.deadline}
             timeOut={job.salary}
+            type={"job"}
         />
     });
     return (

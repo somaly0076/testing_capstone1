@@ -8,17 +8,18 @@ import Card from "./CompanyCard";
 import { companies } from "./../db";
 import FavoriteCard from "./FavoriteCard";
 
-//     const [fav, setFav] = useState();
-//     useEffect(() => {
-//         (async () => {
-//             await addFavorite(9, 'loan');
-//             const res = await fetchData('http://localhost:4000/api/favorites/1/loan');
-//             setFav(res.data.data)
-//         })()
-//     }, []);
-//    console.log(fav)
 
 const CollectionPanel = () => {
+  const [fav, setFav] = useState([]);
+  useEffect(() => {
+      (async () => {
+          const res = await fetchData('http://localhost:4000/api/favorites/1/job');
+        setFav(res.data.data.allFavorite)
+      
+      })()
+  }, []);
+  fav.map(x=> console.log(x.job.salary))
+ 
 
     return (
         <div className="mt-[100px]">

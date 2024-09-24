@@ -9,9 +9,9 @@ import MiniMap from '../../assets/svg/miniMap.svg'
 import MiniClock from '../../assets/svg/miniClock.svg';
 import Calender from '../../assets/svg/calender.svg';
 import { NODE_ENV } from '../../constants';
+import addFavorite from '../../features/slices/functions/addFavorite'
 
-
-const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink, twitterLink, youtubeLink, websiteLink, location, deadLine, timeOut }) => {
+const Card = ({id, image, imageAlt, title, description, facebookLink, instagramLink, twitterLink, youtubeLink, websiteLink, location, deadLine, timeOut, type }) => {
     const socialMediaIcons = [
         { icon: Facebook, linkKey: facebookLink },
         { icon: Twitter, linkKey: twitterLink },
@@ -70,9 +70,9 @@ const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink
                             })}
                         </div>
                         <div className="flex justify-between">
-                            <div className="w-[100px] flex justify-around">
+                            <div className="w-[100px] flex justify-around cursor-pointer">
                                 <div>
-                                    <img src={BookMark} alt="Bookmark" />
+                                    <img src={BookMark} alt="Bookmark" onClick={() =>addFavorite(id,type)} />
                                 </div>
                                 <Link to="">
                                     <img src={Map} alt="Map" />
